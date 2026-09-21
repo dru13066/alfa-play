@@ -71,6 +71,7 @@ addEventListener('keyup',e=>{if(e.key==='ArrowLeft')keys.left=false;if(e.key==='
 document.querySelectorAll('.mobileControls button').forEach(b=>{const k=b.dataset.key;const on=e=>{e.preventDefault();if(k==='jump')jump();else keys[k]=true};const off=e=>{e.preventDefault();if(k!=='jump')keys[k]=false};b.addEventListener('pointerdown',on);b.addEventListener('pointerup',off);b.addEventListener('pointerleave',off)});
 $('#soundBtn').onclick=()=>{$('#soundBtn').textContent=$('#soundBtn').textContent==='♪'?'×':'♪'};
 addEventListener('resize',()=>{if(state.running)buildLevel()});
+$('#startDialog').showModal();
 
 // Optional WebMCP controls: mirrors the same actions available in the UI.
 const modelContext=document.modelContext;
