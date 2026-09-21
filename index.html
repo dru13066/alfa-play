@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Альфа: денежный забег</title>
+  <meta name="description" content="Пиксельный платформер о разумном обращении с деньгами">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23ef3124'/%3E%3Cpath d='M8 24 15 7h4l6 17h-5l-1-4h-6l-1 4zm6-8h4l-2-6z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="game-fixes.css">
+</head>
+<body>
+  <div class="rotateHint" aria-hidden="true"><span>↻</span><b>Поверни телефон</b><small>Игра работает в горизонтальном режиме</small></div>
+  <main class="shell">
+    <header class="hud" aria-live="polite">
+      <div class="brand"><span class="mark">A</span><span>ДЕНЕЖНЫЙ ЗАБЕГ</span></div>
+      <div class="level">УРОВЕНЬ <strong id="levelNo">1</strong>/5</div>
+      <div class="pig"><span class="pigIcon">◉</span><span id="coins">0</span><small>монет</small></div>
+      <button id="soundBtn" class="iconBtn" aria-label="Выключить звук">♪</button>
+    </header>
+
+    <section class="gameCard">
+      <div id="game" class="game" tabindex="0" aria-label="Игровое поле">
+        <div class="skyline"></div>
+        <div id="world" class="world"></div>
+        <div class="instructions"><b>← →</b> движение <b>ПРОБЕЛ ×2</b> двойной прыжок + кувырок</div>
+      </div>
+      <div class="mobileControls" aria-label="Экранное управление">
+        <button data-key="left">◀</button><button data-key="jump">▲</button><button data-key="right">▶</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="startDialog" open class="modal startModal">
+    <div class="modalInner">
+      <div class="eyebrow">ПЛАТФОРМЕР ПРО ДЕНЬГИ</div>
+      <h1>Ты всё делаешь<br>не так. <em>Продолжай!</em></h1>
+      <p>Собирай монеты, обходи финансовые ловушки и прокачай свою копилку за 5 уровней.</p>
+      <h2>Выбери героя</h2>
+      <div class="avatars">
+        <button class="avatar selected" data-avatar="girl"><img src="assets/alfagirl2.svg" alt=""><b>Девочка</b></button>
+        <button class="avatar" data-avatar="boy"><img src="assets/human-boy.svg" alt=""><b>Мальчик</b></button>
+        <button class="avatar" data-avatar="cat"><img src="assets/cat.svg" alt=""><b>Кошка</b></button>
+      </div>
+      <button id="startBtn" class="primary">НАЧАТЬ ИГРУ →</button>
+    </div>
+  </dialog>
+
+  <dialog id="lessonDialog" class="modal lessonModal">
+    <div class="lessonTop"><span class="dangerIcon">!</span><span>ФИНАНСОВАЯ ЛОВУШКА</span></div>
+    <div class="modalInner lessonInner">
+      <h2 id="lessonTitle"></h2>
+      <p id="lessonText"></p>
+      <div class="tip"><b>Что можно было сделать?</b><span id="lessonTip"></span></div>
+      <a id="lessonLink" href="https://alfabank.ru/help/" target="_blank" rel="noopener">Подробнее на сайте Альфа‑Банка ↗</a>
+      <button id="retryBtn" class="primary">ПОНЯТНО, ПРОДОЛЖИТЬ</button>
+    </div>
+  </dialog>
+
+  <dialog id="resultDialog" class="modal resultModal">
+    <div class="modalInner">
+      <div class="eyebrow">УРОВЕНЬ ПРОЙДЕН</div>
+      <h2 id="resultTitle">Отличный забег!</h2>
+      <div class="scoreGrid">
+        <div><b id="levelCoins">0</b><span>монет собрано</span></div>
+        <div><b id="levelTraps">0</b><span>ловушек встречено</span></div>
+        <div><b id="totalCoins">0</b><span>в копилке</span></div>
+      </div>
+      <p id="resultText"></p>
+      <button id="nextBtn" class="primary">СЛЕДУЮЩИЙ УРОВЕНЬ →</button>
+    </div>
+  </dialog>
+
+  <dialog id="finalDialog" class="modal finalModal">
+    <div class="modalInner">
+      <div class="trophy">★</div>
+      <h2>Финансовая свобода<br>разблокирована!</h2>
+      <p>Ты прошёл 5 уровней, собрал <b id="finalCoins">0</b> монет и научился замечать денежные ловушки.</p>
+      <button id="againBtn" class="primary">СЫГРАТЬ ЕЩЁ РАЗ</button>
+    </div>
+  </dialog>
+  <script src="game.js"></script>
+</body>
+</html>

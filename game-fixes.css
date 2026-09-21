@@ -1,0 +1,46 @@
+.platform{
+  background-position:left top;
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+  border:0;
+  box-shadow:none;
+}
+.platform.long{background-image:url('assets/platform_long.svg')}
+.platform.medium{background-image:url('assets/platform_medium.svg')}
+.platform.short{background-image:url('assets/platform_short.svg')}
+.player{transform-origin:center}
+.player .playerSprite{width:58px;height:70px;object-fit:contain;image-rendering:pixelated;transform-origin:50% 50%}
+.player.cat .playerSprite{width:70px;height:70px}
+.player.spinning .playerSprite{animation:flip .42s steps(8) infinite}
+.coin{
+  width:42px;
+  height:42px;
+  background-image:url('assets/alfacoin2.svg');
+}
+@keyframes bob{50%{margin-top:-7px}}
+@keyframes flip{to{transform:rotate(360deg)}}
+
+.rotateHint{display:none}
+
+@media (max-width:960px) and (orientation:landscape){
+  html,body{width:100%;height:100%;overflow:hidden}
+  .shell{width:100%;height:100dvh;padding:5px}
+  .hud{height:46px;padding:0 8px;border-width:2px;box-shadow:3px 3px 0 var(--lime);grid-template-columns:1fr auto auto}
+  .brand{font-size:14px}.brand .mark{width:30px;height:30px;font-size:22px}.brand span:last-child{display:inline}
+  .level{font-size:12px}.pig{padding:4px 8px;font-size:15px}.pig small,.iconBtn{display:none}
+  .gameCard{margin-top:7px}.game{height:calc(100dvh - 58px);min-height:0;border-width:3px;box-shadow:none}
+  .instructions{display:none}
+  .mobileControls{display:flex;position:fixed;left:14px;right:14px;bottom:10px;justify-content:space-between;margin:0;z-index:15;pointer-events:none}
+  .mobileControls button{display:block;width:62px;height:50px;opacity:.8;pointer-events:auto;touch-action:none}
+  .modal{max-width:650px;max-height:100dvh;padding:6px;overflow:auto}
+  .modalInner{padding:12px 18px;box-shadow:5px 5px 0 var(--lime);border-width:3px}
+  .modal h1{font-size:26px;margin:7px 0}.modal h2{font-size:18px;margin:6px 0}.modal p{font-size:14px;margin:6px 0;line-height:1.25}
+  .avatars{gap:8px;margin:7px 0 10px}.avatar{padding:5px;font-size:12px}.avatar span,.avatar img{height:48px;margin-bottom:3px}
+  .primary{padding:9px 16px;font-size:14px;border-width:3px}.scoreGrid{margin:10px 0}.scoreGrid div{padding:8px}.scoreGrid b{font-size:24px}
+  .lessonTop{padding:6px 10px}.tip{padding:8px;margin:8px 0}.lessonInner a{margin:7px 0 10px}
+}
+
+@media (max-width:700px) and (orientation:portrait){
+  .rotateHint{position:fixed;inset:0;z-index:1000;background:#0d0d12;display:grid;place-content:center;justify-items:center;gap:10px;text-align:center;padding:24px}
+  .rotateHint span{font-size:72px;color:var(--lime);line-height:1}.rotateHint b{font-size:24px}.rotateHint small{font:16px Arial,sans-serif;color:#bbb}
+}
